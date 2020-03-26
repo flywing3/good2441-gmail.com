@@ -1,0 +1,37 @@
+import requests
+import json
+import datetime
+
+url = 'https://my.service.nsw.gov.au/MyServiceNSW/apexremote'
+header = {'authority': 'my.service.nsw.gov.au',
+'method': 'POST',
+'path': '/MyServiceNSW/apexremote',
+'scheme': 'https',
+'accept': '*/*',
+'accept-encoding': 'gzip, deflate, br',
+'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',
+'content-length': '385',
+'content-type': 'application/json',
+'cookie': '_fbp=fb.2.1559183347184.165007141; __gads=ID=29bd69cd6475a6b6:T=1559278873:S=ALNI_MaNhWJ2MIzs5_xjQXEB3_C5i0ElYw; _ga=GA1.3.1205798699.1559278873; __insp_uid=3997430379; _hjid=73a4e49f-ef16-495f-83d0-57f5af9f62c7; __insp_wid=578988895; __insp_slim=1567392413618; __insp_nv=false; __insp_targlpu=aHR0cHM6Ly93d3cuaWNhcmUubnN3Lmdvdi5hdS9nb3Zlcm5tZW50LWFnZW5jaWVzL291ci1mdW5kcy1hbmQtc2NoZW1lcy90cmVhc3VyeS1tYW5hZ2VkLWZ1bmQvI2dyZWY%3D; __insp_targlpt=VGhlIFRyZWFzdXJ5IE1hbmFnZWQgRnVuZCAoVE1GKSB8IGljYXJl; __insp_norec_howoften=true; __insp_norec_sess=true; _gcl_au=1.1.1709752111.1578627412; _ga=GA1.1.1205798699.1559278873; liveagent_oref=https://www.service.nsw.gov.au/transaction/check-vehicle-registration; liveagent_ptid=97f5290e-5c76-4329-b684-4cea0b8bb17d; _gid=GA1.3.1959129208.1583878500; _gid=GA1.1.1959129208.1583878500; liveagent_sid=8d87bc69-29c2-4e67-b431-efaa2371a5cd; liveagent_vc=3; sjSE=5; _dc_gtm_UA-40178787-2=1; _gat_UA-40178787-2=1; _gat=1',
+'origin': 'https://my.service.nsw.gov.au',
+'referer': 'https://my.service.nsw.gov.au/MyServiceNSW/index',
+'user-agent': 'Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1',
+'x-requested-with': 'XMLHttpRequest',
+'x-user-agent': 'Visualforce-Remoting',
+'sec-fetch-dest': 'empty',
+'sec-fetch-mode': 'cors',
+'sec-fetch-site': 'same-origin'
+}
+
+payload={"action":"RMSWrapperCtrl","method":"createRMSTransaction","data":["{\"ipAddress\":\"8c9c38460d90887df46ba912405c819508659b99bdc9cd943a44986bea89d56d\",\"transactionName\":\"FREEREGCHK\",\"outletNumber\":\"\"}"],"type":"rpc","tid":11,"ctx":{"csrf":"VmpFPSxNakF5TUMwd015MHhNMVF5TWpveE5Ub3dNUzQyT0RsYSxKUGZZWnhtMnpiT3ZMRDhJTWNHbVRJLE0yTmtaV1V6","vid":"06690000005lUNp","ns":"","ver":34}}
+
+
+data={"action":"RMSWrapperCtrl","method":"createRMSTransaction","data":["{\"ipAddress\":\"8c9c38460d90887df46ba912405c819508659b99bdc9cd943a44986bea89d56d\",\"transactionName\":\"FREEREGCHK\",\"outletNumber\":\"\"}"],"type":"rpc","tid":19,"ctx":{"csrf":"VmpFPSxNakF5TUMwd015MHhNMVF5TWpveE5Ub3dNUzQyT0RsYSxKUGZZWnhtMnpiT3ZMRDhJTWNHbVRJLE0yTmtaV1V6","vid":"06690000005lUNp","ns":"","ver":34}}
+#print(json.dumps(data))
+
+response = requests.get(url,data=json.dumps(payload), headers=header,allow_redirects=True)
+
+#with open('C:/test/test3.html', 'wb') as f:
+  #  f.write(response.content)
+
+print(response.text)
